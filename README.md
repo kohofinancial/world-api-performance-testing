@@ -120,3 +120,17 @@ mvn gatling:test
 
 2. We can also use variable for the number of users in our simulation
 
+
+## Step 5 - Real use case!
+
+1. Adding a feeder
+
+```
+  val accountNumbers = csv("account_numbers.csv").eager.random
+```
+
+2. Adding a custom body with variable
+
+```
+    .body(ElFileBody("authorization.json")).asJson
+```

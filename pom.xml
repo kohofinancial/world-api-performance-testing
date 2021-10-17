@@ -31,6 +31,11 @@
       <artifactId>gatling-recorder</artifactId>
       <version>${gatling.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.github.jwt-scala</groupId>
+      <artifactId>jwt-core_2.13</artifactId>
+      <version>9.0.2</version>
+    </dependency>
   </dependencies>
 
   <build>

@@ -1,0 +1,73 @@
+{
+    "account": {
+        "account_status": "N",
+        "cad": 71563,
+        "card_status": "N",
+        "expiration_date": "2301",
+        "merchant_supplied_expiration_date": null,
+        "pan": "5198",
+        "prn": "${accountNumber}",
+        "track_expiration_date": null,
+        "xid": 71687
+    },
+    "amounts": {
+        "available_funds": "4400.64",
+        "cashback_amount": "0.0",
+        "currency": "840",
+        "exchange_rate": "61000000",
+        "fee_amount": "0.00",
+        "local_currency": "840",
+        "local_currency_amount": "1.0",
+        "trans_amount": "1.0"
+    },
+    "auth_id": 6631254,
+    "auth_type": "Auth",
+    "bai": null,
+    "ecommerce": {
+        "is_ecommerce": false
+    },
+    "eligible_for_balance_return": false,
+    "emv": {
+        "is_emv": false
+    },
+    "entry_type": "Magnetic Stripe",
+    "id": "3bzANGgrTfCoj9LbGz3RkR",
+    "international": false,
+    "mcc": 5542,
+    "merchant": {
+        "acquirer_id": "006440",
+        "merchant_country": "840",
+        "merchant_description": "EXXON PRATTVILLE COOSA PRATTVILLE    AL ",
+        "merchant_id": "125807000000000",
+        "merchant_postal_code": "36067",
+        "merchant_state": "NV",
+        "terminal_id": "00010102",
+        "terminal_network": "None"
+    },
+    "mti": "0120",
+    "network": "Mastercard",
+    "original_id": 6620572,
+    "partial_supported": false,
+    "pin_entry_capability": "Capable",
+    "response_code": "00",
+    "response_code_list": [],
+    "risk_score": "None",
+    "subnetwork": "Mastercard Banknet",
+    "timestamp": "20201210:084305MST",
+    "transaction": {
+        "cardholder_present": "Y",
+        "recurring": "N"
+    },
+    "transaction_type": "Auth",
+    "validation_results": {
+        "aav": "N",
+        "arqc": "N",
+        "avs_result": "B",
+        "cvv1": "N",
+        "cvv2": "N",
+        "cvv3": "N",
+        "offline_pin": "N",
+        "pin": "N"
+    },
+    "version": "2.0"
+}
