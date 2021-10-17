@@ -33,3 +33,56 @@ mvn gatling:test
 
 [ERROR] No simulations to run
 ```
+
+
+
+## Step 2 - Ping me
+
+Let's create our first Simulation by pinging one of our service, to be sure we can connect to our service without any issues.
+
+
+1. Create a new file `StatusSimulation.scala`
+
+```
+touch src/test/scala/StatusSimulation.scala
+
+class StatusSimulation extends Simulation { 
+
+}
+```
+
+2. Adding the HTTP Protocol 
+
+```
+  val httpProtocol = http
+    .baseUrl("<URL>") 
+    .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+
+```
+
+3. Adding the Scenario
+
+```
+val scn = scenario("Authorization service is alive") 
+    .exec(
+      http("GET - STATUS") 
+        .get("_status")
+    ) 
+    .pause(5) 
+```
+
+4. Adding the Scenario
+
+```
+  setUp(
+    scn.inject(atOnceUsers(1)) 
+  ).protocols(httpProtocol) 
+```
+
+5. Run it! 
+
+```
+mvn gatling:test
+```
+
+6. Let's look to the report
