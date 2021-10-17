@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    env_file: configuration.env
+    ports:
+      - '8086:8086'
+  telegraf:
+    image: telegraf
+    container_name: telegraf
+    links:
+      - influxdb
+    volumes:
+      - ./docker/telegraf/mytelegraf.conf:/etc/telegraf/telegraf.conf
+    env_file: configuration.env
+    ports:
+      - '2003:2003'
+volumes:
+  grafana_data: {}
+  influxdb_data: {}

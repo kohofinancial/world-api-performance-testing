@@ -86,3 +86,25 @@ mvn gatling:test
 ```
 
 6. Let's look to the report
+
+## Step 3 - Real time informations
+
+1. Enable `graphite` reporting in the `src/test/resources/gatling.conf`
+
+2. Create the `docker-compose.yml`
+
+3. Start all dockers
+
+```
+docker-compose up -d
+```
+
+4. Go to the influxdb url `http://localhost:8086` and import the dashboard `gatling.json`
+
+5. Run it!
+
+```
+mvn gatling:test
+```
+
+6. Data are coming to your dashboard in realtime :party:

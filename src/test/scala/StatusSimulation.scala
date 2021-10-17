@@ -17,6 +17,6 @@ class StatusSimulation extends Simulation {
     .pause(5) 
 
   setUp(
-    scn.inject(atOnceUsers(1)) 
+    scn.inject(atOnceUsers(500)) 
   ).protocols(httpProtocol) 
 }
