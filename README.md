@@ -108,3 +108,15 @@ mvn gatling:test
 ```
 
 6. Data are coming to your dashboard in realtime :party:
+
+## Step 4 - Check and Environment!
+
+1. Gatling supports a lot of checks around your request
+
+```
+          status.is(200),
+          bodyString.is("\"OK\"\n")
+```
+
+2. We can also use variable for the number of users in our simulation
+

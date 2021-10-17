@@ -4,6 +4,7 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
 class StatusSimulation extends Simulation { 
+  val nbUsers = Integer.getInteger("users", 1)
 
   val httpProtocol = http
     .baseUrl("<URL>") 
@@ -13,10 +14,14 @@ class StatusSimulation extends Simulation {
     .exec(
       http("GET - STATUS") 
         .get("_status")
-    ) 
+        .check(
+          status.is(200),
+          bodyString.is("\"OK\"\n")
+        )
+    )
     .pause(5) 
 
   setUp(
-    scn.inject(atOnceUsers(500)) 
+    scn.inject(atOnceUsers(nbUsers)) 
   ).protocols(httpProtocol) 
 }
