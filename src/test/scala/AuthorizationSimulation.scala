@@ -6,12 +6,14 @@ import pdi.jwt.{Jwt, JwtAlgorithm, JwtHeader, JwtClaim, JwtOptions}
 
 class AuthorizationSimulation extends Simulation { 
   val nbUsers = Integer.getInteger("users", 20)
+  val url = System.getProperty("url")
+
   val accountNumbers = csv("account_numbers.csv").eager.random
 
   val token = Jwt.encode("""{"user":1}""", "apple.banana.cherry", JwtAlgorithm.HS256)
 
   val httpProtocol = http
-    .baseUrl("<URL>") 
+    .baseUrl(url) 
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
 
   val scn = scenario("Authorization service is alive") 

@@ -151,3 +151,11 @@ setUp(
   ).protocols(httpProtocol)
 )
 ```
+
+## Step 7 - Let's build and deploy it in Gatling Enterprise
+
+```
+MAVEN_OPTS="-Dusers=1 -Durl=<URL>" mvn gatling:test  -Dgatling.simulationClass=AuthorizationSimulation
+
+mvn clean package -DskipTests
+```

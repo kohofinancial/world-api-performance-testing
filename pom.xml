@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>github.com.kohofinancial</groupId>
-  <artifactId>world-api-performance-testing</artifactId>
+  <artifactId>api-world-performance-testing</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
@@ -45,6 +45,51 @@
         <groupId>io.gatling</groupId>
         <artifactId>gatling-maven-plugin</artifactId>
         <version>${gatling-maven-plugin.version}</version>
+      </plugin>
+          <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+      </plugin>
+      <!-- so maven can compile your scala code -->
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>4.4.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+            <configuration>
+              <recompileMode>all</recompileMode>
+              <jvmArgs>
+                <jvmArg>-Xss100M</jvmArg>
+              </jvmArgs>
+              <args>
+                <arg>-target:jvm-1.8</arg>
+                <arg>-deprecation</arg>
+                <arg>-feature</arg>
+                <arg>-unchecked</arg>
+                <arg>-language:implicitConversions</arg>
+                <arg>-language:postfixOps</arg>
+              </args>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- so maven can build a package for FrontLine -->
+      <plugin>
+        <groupId>io.gatling.frontline</groupId>
+        <artifactId>frontline-maven-plugin</artifactId>
+        <version>1.2.3</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>package</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
