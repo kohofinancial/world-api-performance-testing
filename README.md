@@ -134,3 +134,20 @@ mvn gatling:test
 ```
     .body(ElFileBody("authorization.json")).asJson
 ```
+
+## Step 6 - Let's play with simulation!
+
+Let's change the type of simulation:
+- Closed systems, where you control the concurrent number of users
+- Open systems, where you control the arrival rate of users
+
+```
+setUp(
+  scn.inject(
+    nothingFor(4.seconds), 
+    atOnceUsers(50),
+    rampUsers(50).during(1.minutes),
+    rampUsersPerSec(10).to(20).during(1.minutes).randomized
+  ).protocols(httpProtocol)
+)
+```

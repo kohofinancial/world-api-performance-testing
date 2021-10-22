@@ -5,7 +5,7 @@ import io.gatling.http.Predef._
 import pdi.jwt.{Jwt, JwtAlgorithm, JwtHeader, JwtClaim, JwtOptions}
 
 class AuthorizationSimulation extends Simulation { 
-  val nbUsers = Integer.getInteger("users", 1)
+  val nbUsers = Integer.getInteger("users", 20)
   val accountNumbers = csv("account_numbers.csv").eager.random
 
   val token = Jwt.encode("""{"user":1}""", "apple.banana.cherry", JwtAlgorithm.HS256)
@@ -38,6 +38,11 @@ class AuthorizationSimulation extends Simulation {
     )
 
   setUp(
-    scn.inject(atOnceUsers(nbUsers)) 
+    scn.inject(
+      nothingFor(4.seconds), 
+      atOnceUsers(nbUsers),
+      rampUsers(50).during(1.minutes),
+      rampUsersPerSec(10).to(20).during(1.minutes).randomized
+    ) 
   ).protocols(httpProtocol) 
 }
